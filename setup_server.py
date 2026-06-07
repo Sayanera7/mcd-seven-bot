@@ -17,6 +17,7 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 ticket_counter = {}
+GROUP_LABELS = {"creer-groupe", "join-groupe", "plan-enquete", "op-conjointe", "groupe-gnd", "groupe-dd"}
 
 # ─── HELPERS PERMISSIONS ─────────────────────────────────────────────────────
 
