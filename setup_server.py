@@ -7,7 +7,7 @@ from datetime import datetime
 #   Le token est lu automatiquement depuis Railway
 #   Ne colle JAMAIS ton token ici directement !
 # ============================================================
-TOKEN = os.environ.get("MTUxMjk2ODI0MTM0ODA4NzgwOA.GWpThl.sWPr7RKaW7C3xIjoXhf3hRLsIhCP6QQqL6c_KA")
+TOKEN = os.environ.get("TOKEN")
 GUILD_ID = int(os.environ.get("GUILD_ID", "1510712769731624990"))
 # ============================================================
 
