@@ -17,7 +17,6 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 ticket_counter = {}
-GROUP_LABELS = {"creer-groupe", "join-groupe", "plan-enquete", "op-conjointe", "groupe-gnd", "groupe-dd"}
 
 # ─── HELPERS PERMISSIONS ─────────────────────────────────────────────────────
 
@@ -238,11 +237,7 @@ class TicketGNDView(discord.ui.View):
             "equip-gnd": discord.Color.green(),  "autre-gnd": discord.Color.greyple(),
         }
         all_staff = self.staff + [self.role_gnd]
-        val = select.values[0]
-        if val in GROUP_LABELS:
-            await create_ticket_with_threads(interaction, val, self.cat, all_staff, self.log, descs[val], colors.get(val, discord.Color.blue()))
-        else:
-            await create_ticket(interaction, val, self.cat, all_staff, self.log, descs[val], colors.get(val, discord.Color.blue()))
+        await create_ticket(interaction, select.values[0], self.cat, all_staff, self.log, descs[select.values[0]], colors[select.values[0]])
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  🔍 TICKET DETECTIVE DIVISION
@@ -286,11 +281,7 @@ class TicketDDView(discord.ui.View):
             "autre-dd": discord.Color.greyple(),
         }
         all_staff = self.staff + [self.role_dd]
-        val = select.values[0]
-        if val in GROUP_LABELS:
-            await create_ticket_with_threads(interaction, val, self.cat, all_staff, self.log, descs[val], colors.get(val, discord.Color.greyple()))
-        else:
-            await create_ticket(interaction, val, self.cat, all_staff, self.log, descs[val], colors.get(val, discord.Color.greyple()))
+        await create_ticket(interaction, select.values[0], self.cat, all_staff, self.log, descs[select.values[0]], colors.get(select.values[0], discord.Color.greyple()))
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  👥 TICKET GROUPES & ENQUÊTES À VENIR
@@ -332,7 +323,7 @@ class TicketGroupeView(discord.ui.View):
             "debrief": discord.Color.greyple(),      "renfort": discord.Color.red(),
         }
         all_staff = self.staff + [self.role_gnd, self.role_dd]
-        await create_ticket_with_threads(interaction, select.values[0], self.cat, all_staff, self.log, descs[select.values[0]], colors[select.values[0]])
+        await create_ticket(interaction, select.values[0], self.cat, all_staff, self.log, descs[select.values[0]], colors[select.values[0]])
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  📂 CASIER JUDICIAIRE — AGENT
